@@ -1,0 +1,13 @@
+---
+title: "dendroGlobal"
+---
+
+Welcome to the data upload platform of the Dendroglobal/European Drought 2018 initiative. 
+
+This platform the collection of dendrometer and environmental measurements (at one-hour resolution or higher) with the relative site, trees and sensors metadata. 
+
+Please read the instructions before initiating the uploading process.
+
+## Data policy
+
+Link to the data policy with short excerpt.

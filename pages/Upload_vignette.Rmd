@@ -1,0 +1,29 @@
+---
+title: "Uploading the data the dendroGlobal"
+---
+
+The up-loading procedure consists of 6 steps. Each step is presented in an individual tab. Please follow the suggested order (i.e. Site, Dendrometers, Trees, Environment, Contributors, Submit). If you have more sites, repeat the up-loading procedure for each site. 
+
+Before starting the procedure, move along the empty tabs to be aware of the information you will be asked to provide. Cells shaded light green are mandatory.
+
+## Checklist
+
+In particular, be sure you have:
+
+1. The metadata and two data files, one for the dendrometer and one for the environmental data. The Environmental data should include at least two parameters, i.e., Air temperature, plus relative humidity and/or precipitation)
+
+2. The two the data files are in .csv format (comma separated) with:
+  <ol type="a">
+    <li>in the first column the timestamps with the format “YYYY-MM-DD hh:mm:ss” (ISO8601 format). Timestamps should have a regular resolution (at least one hour) and not be repeated. The function is.dendro of the R package dendrometer can be used to verify the correctness of the date format.</li>
+    <li>in the following columns the measurements data. The column header indicates a unique identifier of the sensor. The dendrometer data should be in a metric unit (micrometer or millimeter).</li>
+    <li>Missing values should be indicated as NA</li>
+    <li>In case your data contain daylight saving, convert to the "normal", UTC, time</li>
+  </ol>
+3. Required metadata for each element are:
+  <ol type="a">
+    <li>For the Site: Site Name and Lat/Long in decimal format with 4 digits</li>
+    <li>For the Dendrometer sensors: TreeID, Time_Zone (in UTC format), Daylight saving, Type [Radial/Circumference/Diameter], Unit of measurements [μm, mm], Is the monitoring ongoing?, Monitored organ [Stem, Branch, Root] of the tree is monitored), ….</li>
+    <li>For the Tree: Species</li>
+    <li>For the Environmental sensors: Parameter [Air Temperature, Precipitation, …], Time Zone, Daylight saving and Unit)</li>
+    <li>For the Contributor: First Names, Last Names, Affiliation and emails</li>
+  </ol>

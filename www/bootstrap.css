@@ -1,0 +1,8 @@
+.handsontable .htAutocompleteArrow {
+ float:right;
+ font-size:10px;
+ color:#000;
+ cursor:default;
+ width:16px;
+ text-align:center
+}

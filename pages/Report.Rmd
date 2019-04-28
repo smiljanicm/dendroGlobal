@@ -1,0 +1,92 @@
+---
+title: "Data report"
+output: html_fragment
+params:
+  contributors: NA
+  site_meta: NA
+  tree_meta: NA
+  dm_meta: NA
+  dm_data: NA
+  clim_data: NA
+  clim_meta: NA
+---
+
+### Contributors 
+
+```{r contributors, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+contributors <- t(stri_list2matrix(params$contributors$data))
+colnames(contributors) <- unlist(params$contributors$params$colHeaders)
+contributors[(which(contributors == "NULL"))] <- NA
+contributors[(which(contributors == ""))] <- NA
+contributors <- as.data.frame(contributors, stringsAsFactors = FALSE)
+
+contributors$Manager[is.na(contributors$Manager)] <- 'FALSE'
+contributors$Owner[is.na(contributors$Owner)] <- 'FALSE'
+
+contributors$Manager <- ifelse(as.logical(contributors$Manager), 'Yes', 'No')
+contributors$Owner <- ifelse(as.logical(contributors$Owner), 'Yes', 'No')
+kable(contributors) %>%
+  kableExtra::kable_styling()
+```
+
+### Site
+
+```{r site, echo=FALSE}
+kable(params$site_meta) %>%
+  kableExtra::kable_styling()
+```
+
+### Trees
+
+```{r trees, echo=FALSE, message=FALSE, warning=FALSE}
+source('../helpers/rhandsontable_todf.R')
+trees <- rhandsontable_todf(params$tree_meta)
+kable(trees) %>%
+  kableExtra::kable_styling()
+```
+
+### Dendrometers
+```{r dendrometers, echo=FALSE, message=FALSE, warning=FALSE}
+dm_data <- params$dm_data
+source('../helpers/rhandsontable_todf.R')
+dm_meta <- rhandsontable_todf(params$dm_meta)
+kable(dm_meta) %>%
+  kableExtra::kable_styling()
+full_join(dm_meta,trees) %>%
+  select(SensorID, TreeID, Species, Type, Monitored.organ) %>%
+  full_join(reshape2::melt(dm_data %>%
+                            mutate(TIMESTAMP = as.POSIXct(rownames(.), tz=unique(dm_meta$Time.Zone))) , id='TIMESTAMP'), by = c('TreeID'='variable')) %>% 
+ggplot() +
+  geom_line(aes(x=TIMESTAMP, y=value, group=SensorID, colour=TreeID)) +
+  facet_grid(Type~Species) +
+  scale_colour_discrete("Trees") +
+  xlab("Time") +
+  ylab("Dendrometer value") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  guides(colour = guide_legend(title.position = "top"))
+```
+
+### Environment
+```{r environment, echo=FALSE, warning=FALSE, message=FALSE}
+clim_data <- params$clim_data
+source('../helpers/rhandsontable_todf.R')
+clim_meta <- rhandsontable_todf(params$clim_meta)
+kable(clim_meta) %>%
+  kableExtra::kable_styling()
+clim_data %>% 
+  reshape2::melt() %>%
+  group_by(variable) %>%
+  summarize(Min = min(value, na.rm=TRUE),
+            Q25 = quantile(value, 0.25, na.rm=TRUE),
+            Median = median(value, na.rm=TRUE),
+            Mean = mean(value, na.rm=TRUE),
+            Q75 = quantile(value, 0.75, na.rm=TRUE),
+            Max = max(value, na.rm=TRUE),
+            Number_of_obs. = n(),
+            Number_of_NAs = sum(is.na(value)),
+            NA_ratio = mean(is.na(value))) %>%
+  kable() %>%
+  kableExtra::kable_styling()
+```
