@@ -43,7 +43,7 @@ shinyServer(function(input, output, session) {
       output$Dm_check <- dm_meta_check_result
       return()
     } else {
-      updateTabsetPanel(session, "dendroGlobal",
+      updateTabsetPanel(session, "Submition",
                        selected = "Trees")
     }
   })
@@ -66,7 +66,7 @@ shinyServer(function(input, output, session) {
       output$Tree_check <- tree_meta_check_result
       return()
     } else {
-      updateTabsetPanel(session, "dendroGlobal",
+      updateTabsetPanel(session, "Submition",
                        selected = "Environment")
     }
   })
@@ -86,7 +86,7 @@ shinyServer(function(input, output, session) {
       output$Clim_check <- clim_meta_check_result
       return()
     } else {
-      updateTabsetPanel(session, "dendroGlobal",
+      updateTabsetPanel(session, "Submition",
                        selected = "Contributors")
     }
   })
@@ -98,7 +98,7 @@ shinyServer(function(input, output, session) {
       output$Cont_check <- contributor_check_result
       return()
     } else {
-      updateTabsetPanel(session, "dendroGlobal",
+      updateTabsetPanel(session, "Submition",
                        selected = "Submit")
     }
   })
@@ -189,14 +189,20 @@ shinyServer(function(input, output, session) {
       
       dm_data <- formData(input)
       clim_data <- formClimData(input)
-
+      dm_data_row <- rownames(dm_data)
+      rowID <- seq(1, nrow(dm_data), length=500)
+      
+      dm_data_row <- dm_data_row[rowID]
+      dm_data_sub <- slice(dm_data, rowID)
+      print(dm_data_sub)
+      rownames(dm_data_sub) <- dm_data_row
       site_meta <- data.frame(Site_Name = input$siteID,
                               Latitude = input$lat,
                               Longitude = input$long)
       param <- list(contributors = input$contributors,
                      site_meta = site_meta,
                      tree_meta = input$tree_meta,
-                     dm_data = dm_data,
+                     dm_data = dm_data_sub,
                      dm_meta = input$dm_meta,
                      clim_data = clim_data,
                      clim_meta = input$clim_meta)
