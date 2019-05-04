@@ -1,0 +1,16 @@
+---
+title: "Contact"
+output: html_fragment
+---
+
+For any question please contact: Ute Sass-Klaassen (Ute.SassKlaassen@wur.nl)
+
+Core group of DENDROUGHT 2018
+Kathy Steppe, Roberto Salomón & Jonas von der Crone, Ghent University, Belgium
+Patrick Fonti, Georg von Arx & Roman Zweifel, WSL Birmensdorf, Switzerland
+Marko Smiljanic, University of Greifswald, Germany
+Marcus Lindner & Laura Nikinmaa, Annemiek Stegehuis, EFI, Bonn, Germany  
+Jordi Martinez Vilalta, Rafael Poyatos, Maurizio Mencuccini, CREAF, Barcelona, Spain
+Emil Cienciala, IFER - Institute of Forest Ecosystem Research, Czech Republic
+Ernst van der Maaten, Technical University of Dresden, Germany
+Ute Sass-Klaassen, Gert-Jan Nabuurs & Bas Lerink, Wageningen University, The Netherlands 
