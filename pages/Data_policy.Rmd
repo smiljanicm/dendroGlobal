@@ -3,9 +3,19 @@ title: "Data policy"
 output: html_fragment
 ---
 
+<div style="width: 75%; margin: auto;">
 
+<h3> Data policy </h3>
+<p>
 Data and metadata will be collected, stored and analysed exclusively for the above described DENDROUGHT 2018 research initiative and deposited in a repository (if needed) according to journal instructions.  
+</p>
 
+<p>
 Data contributors will be informed on the journal data policy and will have option to withdraw their data and co-authorship before manuscript submission, if desired. 
+</p>
 
-Storage of dendrometer data and metadata will be done on the server of the WSL, Birmensdorf, Zurich, Switzerland under the responsibility of Georg von Arx, Patrick Fonti and in collaboration with Marko Smiljanic, Greifswald University, Germany.
+<p>
+Final storage of dendrometer data and metadata will be done on the server of the WSL, Birmensdorf, Zurich, Switzerland under the responsibility of Georg von Arx, Patrick Fonti and in collaboration with Marko Smiljanic, Greifswald University, Germany.
+</p>
+
+</div>

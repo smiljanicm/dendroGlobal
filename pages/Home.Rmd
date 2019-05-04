@@ -1,13 +1,48 @@
 ---
-title: "dendroGlobal"
+title: "DENDROUGHT 2018"
+output: html_fragment
 ---
 
-Welcome to the data upload platform of the Dendroglobal/European Drought 2018 initiative. 
+<style>
+body {
+text-align: justify;
+line-height: 30px;
+width: 100%;
+margin: auto;
+height: 100%;
+}
+</style>
 
-This platform the collection of dendrometer and environmental measurements (at one-hour resolution or higher) with the relative site, trees and sensors metadata. 
+<div style="width: 75%; margin: auto;">
 
-Please read the instructions before initiating the uploading process.
+<h2> Welcome to DENDROUGHT 2018! </h2>
 
-## Data policy
+<p>
+This is a platform for the upload of automatic dendrometer measurements with sub-daily temporal resolution and relative metadata for the assessment of trees species responses to the extreme 2018 summer heatwave in a large part of Europe.
+</p>
 
-Link to the data policy with short excerpt.
+<p>
+DENDROUGHT 2018 is a follow up initiative of activities initiated during the <a href='http://streess-cost.eu/'>COST Action STReESS</a>. The initiative is currently animated by a group of about 20 researchers from 8 different European Research Institutions (see contact for more details) who intend to join forces to advance understanding of tree-responses to extreme climatic events by specifically focusing on the effects of the 2018 European summer drought. 
+</p>
+
+<h3> Analysis </h3>
+
+<p>
+Analyses will be oriented at assessing the timing and strength of the drought impact on the trees’ water status and dynamics of seasonal stem growth from measurements of stem size variation measured with high-resolution dendrometers. 
+</p>
+
+<p>
+Results of this European-wide study are expected to be published in a high-ranked peer reviewed scientific journal. Kathy Steppe, Patrick Fonti and Ute Sass-Klaassen will lead the work and all contributors with adequate data will be asked to participate as co-authors in the expected publication.    
+</p>
+
+<h3> Data colection </h3>
+
+<p>
+Data and metadata will be collected, stored and analysed exclusively for the above described DENDROUGHT 2018 research initiative. For detailed information check Data policy.
+</p>
+
+<p>
+Please carefully read the instructions before initiating the uploading process! Well prepared and cleaned data and metadata will save you a lot of time!
+</p>
+
+</div>

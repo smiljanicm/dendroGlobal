@@ -21,7 +21,7 @@ shinyServer(function(input, output, session) {
       output$Site_check <- site_check_result
       return()
     } else {
-      updateNavbarPage(session, "dendroGlobal",
+      updateTabsetPanel(session, "Submition",
                         selected = "Dendrometers")
     }
   })
@@ -43,7 +43,7 @@ shinyServer(function(input, output, session) {
       output$Dm_check <- dm_meta_check_result
       return()
     } else {
-      updateNavbarPage(session, "dendroGlobal",
+      updateTabsetPanel(session, "dendroGlobal",
                        selected = "Trees")
     }
   })
@@ -66,7 +66,7 @@ shinyServer(function(input, output, session) {
       output$Tree_check <- tree_meta_check_result
       return()
     } else {
-      updateNavbarPage(session, "dendroGlobal",
+      updateTabsetPanel(session, "dendroGlobal",
                        selected = "Environment")
     }
   })
@@ -86,7 +86,7 @@ shinyServer(function(input, output, session) {
       output$Clim_check <- clim_meta_check_result
       return()
     } else {
-      updateNavbarPage(session, "dendroGlobal",
+      updateTabsetPanel(session, "dendroGlobal",
                        selected = "Contributors")
     }
   })
@@ -98,7 +98,7 @@ shinyServer(function(input, output, session) {
       output$Cont_check <- contributor_check_result
       return()
     } else {
-      updateNavbarPage(session, "dendroGlobal",
+      updateTabsetPanel(session, "dendroGlobal",
                        selected = "Submit")
     }
   })

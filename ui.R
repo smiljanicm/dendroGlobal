@@ -5,7 +5,7 @@ library(leaflet)
 
 source("./helpers/read_list.R")
 
-shinyUI(ui <- navbarPage("dendroGlobal", id='dendroGlobal', selected='Home',
+shinyUI(ui <- navbarPage("DENDROUGHT 2018", id='dendroGlobal', selected='Home',
                          tags$head(
                            tags$link(rel = "stylesheet", type = "text/css", href = "bootstrap.css")
                          ),
@@ -15,6 +15,8 @@ shinyUI(ui <- navbarPage("dendroGlobal", id='dendroGlobal', selected='Home',
                          tabPanel("Instructions",
                                   includeMarkdown("./pages/Upload_vignette.Rmd")
                                   ),
+                         tabPanel("Upload data",
+                         tabsetPanel(id="Submition",
                          tabPanel("Site",
                                   helpText(HTML(
                                     paste("Please enter your Site metadata.",
@@ -181,4 +183,9 @@ shinyUI(ui <- navbarPage("dendroGlobal", id='dendroGlobal', selected='Home',
                                   uiOutput("Report"),
                                   uiOutput('Submit'),
                                   uiOutput("Submitted"))
+                         )),
+                         tabPanel("Data policy",
+                                  includeMarkdown("./pages/Data_policy.Rmd")),
+                         tabPanel("Contact",
+                                  includeMarkdown("./pages/Contact.Rmd"))
 ))

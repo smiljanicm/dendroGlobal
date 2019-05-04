@@ -3,14 +3,25 @@ title: "Contact"
 output: html_fragment
 ---
 
-For any question please contact: Ute Sass-Klaassen (Ute.SassKlaassen@wur.nl)
+<div style="width: 75%; margin: auto;">
 
-Core group of DENDROUGHT 2018
-Kathy Steppe, Roberto Salomón & Jonas von der Crone, Ghent University, Belgium
-Patrick Fonti, Georg von Arx & Roman Zweifel, WSL Birmensdorf, Switzerland
-Marko Smiljanic, University of Greifswald, Germany
-Marcus Lindner & Laura Nikinmaa, Annemiek Stegehuis, EFI, Bonn, Germany  
-Jordi Martinez Vilalta, Rafael Poyatos, Maurizio Mencuccini, CREAF, Barcelona, Spain
-Emil Cienciala, IFER - Institute of Forest Ecosystem Research, Czech Republic
-Ernst van der Maaten, Technical University of Dresden, Germany
-Ute Sass-Klaassen, Gert-Jan Nabuurs & Bas Lerink, Wageningen University, The Netherlands 
+<p>
+For any question please contact: Ute Sass-Klaassen (Ute.SassKlaassen@wur.nl). <br />
+For technical support please visit <a href='https://github.com/smiljanicm/dendroGlobal/issues'>our GitHub repository</a>.
+</p>
+
+<p>
+<b>Core group of DENDROUGHT 2018</b>
+<ul>
+<li>Kathy Steppe, Roberto Salomón & Jonas von der Crone, Ghent University, Belgium</li>
+<li>Patrick Fonti, Georg von Arx & Roman Zweifel, WSL Birmensdorf, Switzerland</li>
+<li>Marko Smiljanic, University of Greifswald, Germany</li>
+<li>Marcus Lindner & Laura Nikinmaa, Annemiek Stegehuis, EFI, Bonn, Germany</li>
+<li>Jordi Martinez Vilalta, Rafael Poyatos, Maurizio Mencuccini, CREAF, Barcelona, Spain</li>
+<li>Emil Cienciala, IFER - Institute of Forest Ecosystem Research, Czech Republic</li>
+<li>Ernst van der Maaten, Technical University of Dresden, Germany</li>
+<li>Ute Sass-Klaassen, Gert-Jan Nabuurs & Bas Lerink, Wageningen University, The Netherlands </li>
+</ul>
+</p>
+
+<div>

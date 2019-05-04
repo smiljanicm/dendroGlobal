@@ -2,23 +2,37 @@
 title: "Uploading the data the dendroGlobal"
 ---
 
-The up-loading procedure consists of 6 steps. Each step is presented in an individual tab. Please follow the suggested order (i.e. Site, Dendrometers, Trees, Environment, Contributors, Submit). If you have more sites, repeat the up-loading procedure for each site. 
+<div style="width: 75%; margin: auto;">
 
+<h2> Uploading the data </h2>
+
+<p>
+The uploading procedure consists of 6 steps, presented as subtabs under Upload data tab. Please follow the suggested order (i.e. Site, Dendrometers, Trees, Environment, Contributors, Submit) and use Next buttons to validate the data. If you have more sites, repeat the uploading procedure for each site. 
+</p>
+
+<p>
 Before starting the procedure, move along the empty tabs to be aware of the information you will be asked to provide. Cells shaded light green are mandatory.
+</p>
+<h3> Checklist </h3>
 
-## Checklist
-
+<p>
 In particular, be sure you have:
-
+</p>
+<p>
 1. The metadata and two data files, one for the dendrometer and one for the environmental data. The Environmental data should include at least two parameters, i.e., Air temperature, plus relative humidity and/or precipitation)
+</p>
 
+<p>
 2. The two the data files are in .csv format (comma separated) with:
   <ol type="a">
-    <li>in the first column the timestamps with the format “YYYY-MM-DD hh:mm:ss” (ISO8601 format). Timestamps should have a regular resolution (at least one hour) and not be repeated. The function is.dendro of the R package dendrometer can be used to verify the correctness of the date format.</li>
+    <li>in the first column the timestamps with the format “YYYY-MM-DD hh:mm:ss” (ISO8601 format). Timestamps should have a regular resolution (at least one hour) and not be repeated. Gaps in the time series should have  The function is.dendro of the R package dendrometer can be used to verify the correctness of the date format.</li>
     <li>in the following columns the measurements data. The column header indicates a unique identifier of the sensor. The dendrometer data should be in a metric unit (micrometer or millimeter).</li>
     <li>Missing values should be indicated as NA</li>
     <li>In case your data contain daylight saving, convert to the "normal", UTC, time</li>
   </ol>
+</p>
+
+<p>
 3. Required metadata for each element are:
   <ol type="a">
     <li>For the Site: Site Name and Lat/Long in decimal format with 4 digits</li>
@@ -27,3 +41,6 @@ In particular, be sure you have:
     <li>For the Environmental sensors: Parameter [Air Temperature, Precipitation, …], Time Zone, Daylight saving and Unit)</li>
     <li>For the Contributor: First Names, Last Names, Affiliation and emails</li>
   </ol>
+</p>
+
+</div>
