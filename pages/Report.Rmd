@@ -51,9 +51,13 @@ kable(trees) %>%
 dm_data <- params$dm_data
 source('../helpers/rhandsontable_todf.R')
 dm_meta <- rhandsontable_todf(params$dm_meta)
+nspec <- length(unique(trees$Species))
 kable(dm_meta) %>%
   kableExtra::kable_styling()
 
+```
+
+```{r dendro_plot, echo=FALSE, message=FALSE, warning=FALSE, fig.height=4*nspec}
 full_join(dm_meta,trees) %>%
   select(SensorID, TreeID, Species, Type, Monitored.organ) %>%
   full_join(reshape2::melt(dm_data %>%
