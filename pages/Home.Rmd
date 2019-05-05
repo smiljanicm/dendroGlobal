@@ -3,17 +3,7 @@ title: "DENDROUGHT 2018"
 output: html_fragment
 ---
 
-<style>
-body {
-text-align: justify;
-line-height: 30px;
-width: 100%;
-margin: auto;
-height: 100%;
-}
-</style>
-
-<div style="width: 75%; margin: auto;">
+<div style="width: 75%; margin: auto; text-align: justify; line-height: 30px;">
 
 <h2> Welcome to DENDROUGHT 2018! </h2>
 

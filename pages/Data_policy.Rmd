@@ -3,7 +3,7 @@ title: "Data policy"
 output: html_fragment
 ---
 
-<div style="width: 75%; margin: auto;">
+<div style="width: 75%; margin: auto; text-align: justify; line-height: 30px;">
 
 <h3> Data policy </h3>
 <p>

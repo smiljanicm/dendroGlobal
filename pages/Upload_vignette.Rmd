@@ -2,7 +2,7 @@
 title: "Uploading the data the dendroGlobal"
 ---
 
-<div style="width: 75%; margin: auto;">
+<div style="width: 75%; margin: auto; text-align: justify; line-height: 30px;">
 
 <h2> Uploading the data </h2>
 
