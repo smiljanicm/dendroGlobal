@@ -165,10 +165,10 @@ shinyUI(ui <- navbarPage("DENDROUGHT 2018", id='dendroGlobal', selected='Home',
                                           "First Name, Last Name, Affiliation and Email are required fields for all authors. Additionally there must be at least one data owner (person owning the data, usually principle investigator), and data manager (person to contact if we need some help with data cleanup or analysis at later stage). They can be the same person, and there can be more than one data owner and manager.",
                                           "<br />",
                                           "<br />",
-                                          "In case that are more than one contributor, you can add additional rows to the table by right-clicking and selecting 'Insert row below/above' from the context menu. If you delete all rows by accident context menu also contains Undo statement.",
+                                          "If there are more than one contributors, you can add additional rows to the table below by right-clicking and selecting 'Insert row below/above' from the context menu. If you delete all rows by accident context menu contains Undo statement.",
                                           "<br />",
                                           "<br />",
-                                          "After you entered the data, please press Next to verify the metadata and continue to the Submit tab to check and finalize the submission.")
+                                          "After you entered the data, please press Next to validate the metadata and continue to the Submit tab to check and finalize the submission.")
                                   )),
                                   rHandsontableOutput("contributors"),
                                   actionButton("cont_next", "Next"),
