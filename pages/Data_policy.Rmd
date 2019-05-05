@@ -7,7 +7,7 @@ output: html_fragment
 
 <h3> Data policy </h3>
 <p>
-Data and metadata will be collected, stored and analysed exclusively for the above described DENDROUGHT 2018 research initiative and deposited in a repository (if needed) according to journal instructions.  
+Data and metadata will be collected, stored and analysed exclusively for the DENDROUGHT 2018 research initiative and deposited in a repository (if needed) according to journal instructions. Before analyses, an overview table of submitted data (including contact information) will be provided to each contributor.
 </p>
 
 <p>
