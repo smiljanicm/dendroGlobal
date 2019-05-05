@@ -38,7 +38,7 @@ clim_meta_table <- function(sensors, r_o=FALSE, siteID=input$siteID) {
                          'Quantum radiation',
                          'NDVI',
                          'Soil Volumetric Water Content',
-                         'Soil Moisture',
+                         'Soil Water Matrix',
                          'Soil Temperature',
                          'Wind Speed',
                          'Wind direction',
