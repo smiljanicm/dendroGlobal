@@ -8,6 +8,7 @@ library(mapview)
 library(dendrometeR)
 library(xts)
 library(knitr)
+library(dplyr)
 
 source('./helpers/rhandsontable_todf.R')
 source('./helpers/read_list.R')
@@ -189,22 +190,19 @@ shinyServer(function(input, output, session) {
       
       dm_data <- formData(input)
       clim_data <- formClimData(input)
-      dm_data_row <- rownames(dm_data)
-      rowID <- seq(1, nrow(dm_data), length=500)
+ 
       
-      dm_data_row <- dm_data_row[rowID]
-      dm_data_sub <- slice(dm_data, rowID)
-      print(dm_data_sub)
-      rownames(dm_data_sub) <- dm_data_row
+      source('./helpers/data_subsample.R')
+      
       site_meta <- data.frame(Site_Name = input$siteID,
                               Latitude = input$lat,
                               Longitude = input$long)
       param <- list(contributors = input$contributors,
                      site_meta = site_meta,
                      tree_meta = input$tree_meta,
-                     dm_data = dm_data_sub,
+                     dm_data = data_subsample(dm_data),
                      dm_meta = input$dm_meta,
-                     clim_data = clim_data,
+                     clim_data = data_subsample(clim_data),
                      clim_meta = input$clim_meta)
       incProgress(4/10, detail='summarizing...')
       rmarkdown::render('./pages/Report.Rmd', output_file = reportname,

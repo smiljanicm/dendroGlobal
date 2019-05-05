@@ -53,14 +53,15 @@ source('../helpers/rhandsontable_todf.R')
 dm_meta <- rhandsontable_todf(params$dm_meta)
 kable(dm_meta) %>%
   kableExtra::kable_styling()
+
 full_join(dm_meta,trees) %>%
   select(SensorID, TreeID, Species, Type, Monitored.organ) %>%
   full_join(reshape2::melt(dm_data %>%
-                            mutate(TIMESTAMP = as.POSIXct(rownames(.), tz=unique(dm_meta$Time.Zone))) , id='TIMESTAMP'), by = c('TreeID'='variable')) %>% 
+                            mutate(TIMESTAMP = as.POSIXct(rownames(.), tz=unique(dm_meta$Time.Zone))) , id='TIMESTAMP'), by = c('SensorID'='variable')) %>% 
 ggplot() +
-  geom_line(aes(x=TIMESTAMP, y=value, group=SensorID, colour=TreeID)) +
-  facet_grid(Type~Species) +
-  scale_colour_discrete("Trees") +
+  geom_line(aes(x=TIMESTAMP, y=value, colour=SensorID)) +
+  facet_grid(Species~.) +
+  scale_colour_discrete("Sensors") +
   xlab("Time") +
   ylab("Dendrometer value") +
   theme_bw() +
@@ -73,20 +74,24 @@ ggplot() +
 clim_data <- params$clim_data
 source('../helpers/rhandsontable_todf.R')
 clim_meta <- rhandsontable_todf(params$clim_meta)
+nparam <- length(unique(clim_meta$Parameter))
+
 kable(clim_meta) %>%
   kableExtra::kable_styling()
+```
+
+```{r enviro_plot, echo=FALSE, warning = FALSE, message=FALSE, fig.height=4*nparam}
+clim_meta %>% full_join(
 clim_data %>% 
-  reshape2::melt() %>%
-  group_by(variable) %>%
-  summarize(Min = min(value, na.rm=TRUE),
-            Q25 = quantile(value, 0.25, na.rm=TRUE),
-            Median = median(value, na.rm=TRUE),
-            Mean = mean(value, na.rm=TRUE),
-            Q75 = quantile(value, 0.75, na.rm=TRUE),
-            Max = max(value, na.rm=TRUE),
-            Number_of_obs. = n(),
-            Number_of_NAs = sum(is.na(value)),
-            NA_ratio = mean(is.na(value))) %>%
-  kable() %>%
-  kableExtra::kable_styling()
+  mutate(TIMESTAMP = as.POSIXct(rownames(.))) %>%
+  reshape2::melt(id='TIMESTAMP'), by = c('SensorID' = 'variable')) %>%
+  ggplot() +
+  geom_line(aes(x=TIMESTAMP, y=value, colour=SensorID)) +
+  facet_grid(Parameter~., scales = 'free_y') +
+  scale_colour_discrete("Sensors") +
+  xlab("Time") +
+  ylab("Sensors value") +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  guides(colour = guide_legend(title.position = "top"))
 ```
