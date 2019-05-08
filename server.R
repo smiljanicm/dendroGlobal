@@ -227,7 +227,7 @@ shinyServer(function(input, output, session) {
         output$Submitted <- complete_check_result
         return()
       }
-
+      
       site_meta <- data.frame(ID = input$siteID,
                               Country = ifelse(is.null(input$country), 'NA', input$country),
                               Latitude = input$lat,
@@ -239,7 +239,7 @@ shinyServer(function(input, output, session) {
                               Soil_water_holding = ifelse(is.null(input$water_holding), 'NA', input$water_holding),
                               Soil_depth = ifelse(is.null(input$soil_depth), 'NA', input$soil_depth),
                               Management = ifelse(is.null(input$management), 'NA', input$management),
-                              Other_data = ifelse(is.null(input$other_data), 'NA', input$other_data),
+                              Other_data = ifelse(is.null(input$other_data), 'NA', paste0(input$other_data, collapse = ';')),
                               stringsAsFactors = FALSE)
       site_meta$Latitude <- as.numeric(site_meta$Latitude)
       site_meta$Longitude <- as.numeric(site_meta$Longitude)
