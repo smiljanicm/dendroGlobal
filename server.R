@@ -15,6 +15,14 @@ source('./helpers/read_list.R')
 source('./helpers/renderers.R')
 
 shinyServer(function(input, output, session) {
+  output$Upload_vignette <- renderUI({
+    if(!file.exists('/opt/dendroGlobal/Upload_vignette.html')) {
+      rmarkdown::render('./pages/Upload_vignette.Rmd', output_file = '/opt/dendroGlobal/Upload_vignette.html',
+                        intermediates_dir = '/opt/dendroGlobal')
+      
+    }
+    includeHTML('/opt/dendroGlobal/Upload_vignette.html')
+  })
   observeEvent(input$site_next, {
     source('./checks/site_check.R')
     site_check_result <- site_check(input,output)

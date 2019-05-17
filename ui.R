@@ -13,7 +13,7 @@ shinyUI(ui <- navbarPage("DENDROUGHT 2018", id='dendroGlobal', selected='Home',
                                   includeMarkdown("./pages/Home.Rmd")
                          ),
                          tabPanel("Instructions",
-                                  includeMarkdown("./pages/Upload_vignette.Rmd")
+                                  uiOutput("Upload_vignette")
                                   ),
                          tabPanel("Upload data",
                          tabsetPanel(id="Submition",
@@ -179,7 +179,7 @@ shinyUI(ui <- navbarPage("DENDROUGHT 2018", id='dendroGlobal', selected='Home',
                                   helpText(HTML(paste('Please wait until report is generated.', 
                                                  '<br />',
                                                  '<br />',
-                                                 'If the information below is correct and you are willing to participate in the dendroGlobal initiative, please click Submit button.'))),
+                                                 'If the information below is correct and you are willing to participate in the DENDROUGHT 2018 initiative, please click Submit button.'))),
                                   uiOutput("Report"),
                                   uiOutput('Submit'),
                                   uiOutput("Submitted"))

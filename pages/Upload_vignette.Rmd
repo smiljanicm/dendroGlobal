@@ -1,5 +1,6 @@
 ---
 title: "Uploading the data the dendroGlobal"
+output: html_fragment
 ---
 
 <div style="width: 75%; margin: auto; text-align: justify; line-height: 30px;">
@@ -19,28 +20,78 @@ Before starting the procedure, move along the empty tabs to be aware of the info
 In particular, be sure you have:
 </p>
 <p>
-1. The metadata and two data files, one for the dendrometer and one for the environmental data. The Environmental data should include at least two parameters, i.e., Air temperature, plus relative humidity and/or precipitation)
+1. The metadata and two data files, one for the dendrometer and one for the environmental data. The environmental data should include at least two parameters: Air temperature, plus relative humidity and/or precipitation)
 </p>
 
 <p>
-2. The two the data files are in .csv format (comma separated) with:
+2. The two data files in .csv format (comma separated) with:
   <ol type="a">
     <li>in the first column the timestamps with the format “YYYY-MM-DD hh:mm:ss” (ISO8601 format). Timestamps should have a regular resolution (at least one hour) and not be repeated. Gaps in the time series should have  The function is.dendro of the R package dendrometer can be used to verify the correctness of the date format.</li>
     <li>in the following columns the measurements data. The column header indicates a unique identifier of the sensor. The dendrometer data should be in a metric unit (micrometer or millimeter).</li>
     <li>Missing values should be indicated as NA</li>
-    <li>In case your data contain daylight saving, convert to the "normal", UTC, time</li>
+    <li>In case your data follows daylight saving, please convert to the UTC time</li>
   </ol>
+  Please consider example files below before uploading.
 </p>
 
 <p>
-3. Required metadata for each element are:
+3. Collected the required metadata for each element:
   <ol type="a">
     <li>For the Site: Site Name and Lat/Long in decimal format with 4 digits</li>
-    <li>For the Dendrometer sensors: TreeID, Time_Zone (in UTC format), Daylight saving, Type [Radial/Circumference/Diameter], Unit of measurements [μm, mm], Is the monitoring ongoing?, Monitored organ [Stem, Branch, Root] of the tree is monitored), ….</li>
+    <li>For the Dendrometer sensors: TreeID, Time_Zone (in UTC format), Type [Radial/Circumference/Diameter], Unit [μm, mm], Is the monitoring ongoing?, Monitored organ [Stem, Branch, Root]).</li>
     <li>For the Tree: Species</li>
-    <li>For the Environmental sensors: Parameter [Air Temperature, Precipitation, …], Time Zone, Daylight saving and Unit)</li>
-    <li>For the Contributor: First Names, Last Names, Affiliation and emails</li>
+    <li>For the Environmental sensors: Parameter [Air Temperature, Relative Humidity, Precipitation], Time Zone and Unit)</li>
+    <li>For the Contributor: First Names, Last Names, Affiliation and Emails</li>
   </ol>
+</p>
+
+<br />
+
+<h3> Example files </h3>
+
+<h4> Dendrometers </h4>
+<p>
+Timestamps should be unique, equally resolved and corrected for daylight savings time. If you do not have the data for the entire time sequence please indicate missing rows with NAs, similar to the second, third and fourth rows in the example below.
+</p>
+<p>
+```{r dend_example, echo=FALSE, message=FALSE, warning=FALSE}
+dendro <- readr::read_csv('../examples/denDrought_dendrometer_example.csv')
+kableExtra::kable_styling(knitr::kable(head(dendro[1:6], n=10)))
+```
+</p>
+<br />
+<h4> Environmental variables</h4>
+<p>
+File format for environmental variables is almost identical as the file format for dendrometer sensors described above.
+</p>
+<p>
+```{r enviro_example, echo=FALSE, message=FALSE, warning=FALSE}
+enviro <- readr::read_csv('../examples/denDrought_enviro_example.csv')
+kableExtra::kable_styling(knitr::kable(head(enviro, n=10)))
+```
+</p>
+<br />
+<h4> Environmental variables with daily resolution </h4>
+<p>
+It is possible to use the least resolved time as final point in timestamps, i.e. there is no need to indicate hours, minutes and seconds for the daily data. However, please indicate in the Notes column of the environmental metadata how was this time series obtained. For example, are the values in time series observations at specific time (temperature at 14:00), means, minima, maxima or sums (precipitation)?
+</p>
+<p>
+```{r envirod_example, echo=FALSE, message=FALSE, warning=FALSE}
+envirod <- readr::read_csv('../examples/denDrought_enviro_daily_example.csv')
+kableExtra::kable_styling(knitr::kable(head(envirod, n=10)))
+```
+</p>
+<br />
+<h4> Environmental variables with variable resolution (hourly + daily) </h4>
+<p>
+All variables within same datafile. The "missing" data in the daily resolved variables please indicate with NAs. If there is a specific time related to the observations of the daily variables (e.g. temperature observed at 14:00) please put the values at the specific timestamps (14:00).
+</p>
+<p>
+```{r envirom_example, echo=FALSE, message=FALSE, warning=FALSE}
+
+envirom <- dplyr::full_join(enviro, dplyr::mutate(envirod, TIMESTAMP=as.POSIXct(TIMESTAMP)))
+kableExtra::kable_styling(knitr::kable(head(envirom, n=25)))
+```
 </p>
 
 </div>
