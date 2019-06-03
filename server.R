@@ -201,7 +201,13 @@ shinyServer(function(input, output, session) {
  
       
       source('./helpers/data_subsample.R')
-      
+      clim_sub <- data_subsample(clim_data)
+
+      source('./helpers/rhandsontable_todf.R')
+      clim_meta <- rhandsontable_todf(input$clim_meta)
+      clim_sub <- clim_sub[,grepl('^Air Temp', clim_meta$Parameter) |
+                             grepl('^Relative', clim_meta$Parameter) |
+                             grepl('^Precip', clim_meta$Parameter), drop=FALSE]
       site_meta <- data.frame(Site_Name = input$siteID,
                               Latitude = input$lat,
                               Longitude = input$long)
@@ -210,7 +216,7 @@ shinyServer(function(input, output, session) {
                      tree_meta = input$tree_meta,
                      dm_data = data_subsample(dm_data),
                      dm_meta = input$dm_meta,
-                     clim_data = data_subsample(clim_data),
+                     clim_data = clim_sub,
                      clim_meta = input$clim_meta)
       incProgress(4/10, detail='summarizing...')
       rmarkdown::render('./pages/Report.Rmd', output_file = reportname,

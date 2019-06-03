@@ -78,10 +78,12 @@ ggplot() +
 clim_data <- params$clim_data
 source('../helpers/rhandsontable_todf.R')
 clim_meta <- rhandsontable_todf(params$clim_meta)
-nparam <- length(unique(clim_meta$Parameter))
 
 kable(clim_meta) %>%
   kableExtra::kable_styling()
+
+clim_meta <- clim_meta %>% filter(Parameter %in% c('Air Temperature', 'Relative Humidity', 'Precipitation'))
+nparam <- length(unique(clim_meta$Parameter))
 ```
 
 ```{r enviro_plot, echo=FALSE, warning = FALSE, message=FALSE, fig.height=4*nparam}

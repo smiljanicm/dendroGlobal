@@ -7,7 +7,7 @@ source("./helpers/read_list.R")
 
 shinyUI(ui <- navbarPage("DENDROUGHT 2018", id='dendroGlobal', selected='Home',
                          tags$head(
-                           tags$link(rel = "stylesheet", type = "text/css", href = "bootstrap.css")
+                                                                                                                                                                                                                                                                                                                                          tags$link(rel = "stylesheet", type = "text/css", href = "bootstrap.css")
                          ),
                          tabPanel("Home",
                                   includeMarkdown("./pages/Home.Rmd")
